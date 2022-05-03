@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.web;
 
+import lombok.Getter;
 import org.agoncal.application.petstore.domain.Customer;
 import org.agoncal.application.petstore.service.CustomerService;
 import org.agoncal.application.petstore.util.Loggable;
@@ -40,6 +41,7 @@ public class AccountController extends Controller implements Serializable {
 
     @Produces
     @LoggedIn
+    @Getter
     private Customer loggedinCustomer;
 
     @Inject
@@ -114,10 +116,6 @@ public class AccountController extends Controller implements Serializable {
 
     public boolean isLoggedIn() {
         return loggedinCustomer != null;
-    }
-
-    public Customer getLoggedinCustomer() {
-        return loggedinCustomer;
     }
 
     public void setLoggedinCustomer(Customer loggedinCustomer) {

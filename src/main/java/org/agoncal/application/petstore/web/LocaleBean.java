@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.web;
 
+import lombok.Getter;
 import org.agoncal.application.petstore.util.Loggable;
 
 import javax.enterprise.context.SessionScoped;
@@ -15,15 +16,12 @@ import java.util.Locale;
 public class LocaleBean implements Serializable {
 
     @Produces
+    @Getter
     private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
     // ======================================
     // =          Business methods          =
     // ======================================
-
-    public Locale getLocale() {
-        return locale;
-    }
 
     public String getLanguage() {
         return locale.getLanguage();
