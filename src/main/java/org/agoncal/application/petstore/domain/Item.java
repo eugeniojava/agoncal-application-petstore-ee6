@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
 import org.agoncal.application.petstore.constraint.NotEmpty;
 import org.agoncal.application.petstore.constraint.Price;
 
@@ -15,6 +16,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *         --
  */
 
+@Getter
 @Entity
 @NamedQueries({
         @NamedQuery(name = Item.FIND_BY_PRODUCT_ID, query = "SELECT i FROM Item i WHERE i.product.id = :productId"),
@@ -74,44 +76,20 @@ public class Item {
     // =         Getters & setters          =
     // ======================================
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Float getUnitCost() {
-        return unitCost;
     }
 
     public void setUnitCost(Float unitCost) {
         this.unitCost = unitCost;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {

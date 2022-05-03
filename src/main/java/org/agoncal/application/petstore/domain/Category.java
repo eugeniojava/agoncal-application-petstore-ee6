@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
 import org.agoncal.application.petstore.constraint.NotEmpty;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.util.List;
  *         --
  */
 
+@Getter
 @Entity
 @NamedQueries({
         // TODO fetch doesn't work with GlassFIsh
@@ -68,20 +70,8 @@ public class Category {
     // =         Getters & setters          =
     // ======================================
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
@@ -92,10 +82,6 @@ public class Category {
         if (products == null)
             products = new ArrayList<Product>();
         products.add(product);
-    }
-
-    public List<Product> getProducts() {
-        return products;
     }
 
     public void setProducts(List<Product> products) {

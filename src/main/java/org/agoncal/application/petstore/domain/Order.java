@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.List;
  *         --
  */
 
+@Getter
 @Entity
 @Table(name = "t_order")
 @XmlRootElement
@@ -92,40 +94,16 @@ public class Order {
     // =         Getters & setters          =
     // ======================================
 
-    public Long getId() {
-        return id;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public List<OrderLine> getOrderLines() {
-        return orderLines;
     }
 
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
     }
 
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
-    }
-
-    public CreditCard getCreditCard() {
-        return creditCard;
     }
 
     public void setCreditCard(CreditCard creditCard) {

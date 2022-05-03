@@ -1,5 +1,6 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.Getter;
 import javax.persistence.*;
 
 /**
@@ -8,6 +9,7 @@ import javax.persistence.*;
  *         --
  */
 
+@Getter
 @Entity
 public class OrderLine {
 
@@ -48,20 +50,8 @@ public class OrderLine {
     // =         Getters & setters          =
     // ======================================
 
-    public Long getId() {
-        return id;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Item getItem() {
-        return item;
     }
 
     public void setItem(Item item) {
