@@ -2,6 +2,7 @@ package org.agoncal.application.petstore.web;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import org.agoncal.application.petstore.domain.Item;
 import org.agoncal.application.petstore.domain.Product;
 import org.agoncal.application.petstore.service.CatalogService;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 
 @Getter
+@Setter
 @Named
 //@RequestScoped TODO should be request scoped
 @SessionScoped
@@ -33,6 +35,7 @@ public class CatalogController extends Controller implements Serializable {
 
     @Inject
     @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private CatalogService catalogService;
 
     private String categoryName;
@@ -42,7 +45,9 @@ public class CatalogController extends Controller implements Serializable {
     private String keyword;
     private Product product;
     private Item item;
+    @Setter(AccessLevel.NONE)
     private List<Product> products;
+    @Setter(AccessLevel.NONE)
     private List<Item> items;
 
     // ======================================
@@ -68,33 +73,5 @@ public class CatalogController extends Controller implements Serializable {
     public String doSearch() {
         items = catalogService.searchItems(keyword);
         return "searchresult.faces?keyword=" + keyword + "&faces-redirect=true";
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
     }
 }

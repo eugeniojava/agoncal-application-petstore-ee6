@@ -1,6 +1,7 @@
 package org.agoncal.application.petstore.web;
 
 import lombok.Getter;
+import lombok.Setter;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -11,6 +12,7 @@ import javax.inject.Named;
  */
 
 @Getter
+@Setter
 @Named
 @RequestScoped
 public class Credentials {
@@ -22,20 +24,4 @@ public class Credentials {
     private String login;
     private String password;
     private String password2;
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }

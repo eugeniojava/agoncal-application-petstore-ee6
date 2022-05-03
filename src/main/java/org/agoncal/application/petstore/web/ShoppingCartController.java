@@ -1,6 +1,7 @@
 package org.agoncal.application.petstore.web;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.agoncal.application.petstore.domain.*;
 import org.agoncal.application.petstore.service.CatalogService;
 import org.agoncal.application.petstore.service.OrderService;
@@ -44,8 +45,10 @@ public class ShoppingCartController extends Controller implements Serializable {
     @Getter
     private List<CartItem> cartItems;
     @Getter
+    @Setter
     private CreditCard creditCard = new CreditCard();
     @Getter
+    @Setter
     private Order order;
 
     // ======================================
@@ -134,14 +137,6 @@ public class ShoppingCartController extends Controller implements Serializable {
 
     public Customer getCustomer() {
         return loggedInCustomer.get();
-    }
-
-    public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     public CreditCardType[] getCreditCardTypes() {

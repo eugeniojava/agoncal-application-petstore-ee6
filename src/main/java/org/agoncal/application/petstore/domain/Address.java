@@ -1,6 +1,7 @@
 package org.agoncal.application.petstore.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
  */
 
 @Getter
+@Setter
 @Embeddable
 public class Address {
 
@@ -50,34 +52,6 @@ public class Address {
         this.street1 = street1;
         this.city = city;
         this.zipcode = zipcode;
-        this.country = country;
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setStreet1(String street1) {
-        this.street1 = street1;
-    }
-
-    public void setStreet2(String street2) {
-        this.street2 = street2;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public void setCountry(String country) {
         this.country = country;
     }
 

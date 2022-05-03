@@ -1,6 +1,8 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import org.agoncal.application.petstore.constraint.Email;
 import org.agoncal.application.petstore.constraint.Login;
 import org.agoncal.application.petstore.exception.ValidationException;
@@ -22,6 +24,7 @@ import java.util.GregorianCalendar;
  */
 
 @Getter
+@Setter
 @Entity
 @NamedQueries({
         @NamedQuery(name = Customer.FIND_BY_LOGIN, query = "SELECT c FROM Customer c WHERE c.login = :login"),
@@ -37,6 +40,7 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     private Long id;
     @Column(unique = true, nullable = false, length = 10)
     @Login
@@ -63,6 +67,7 @@ public class Customer implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Transient
+    @Setter(AccessLevel.NONE)
     private Integer age;
 
     // ======================================
@@ -135,42 +140,6 @@ public class Customer implements Serializable {
         // The password entered by the customer is not the same stored in database
         if (!pwd.equals(password))
             throw new ValidationException("Passwords don't match");
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     // ======================================

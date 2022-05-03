@@ -1,6 +1,8 @@
 package org.agoncal.application.petstore.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
@@ -13,6 +15,7 @@ import java.util.List;
  */
 
 @Getter
+@Setter
 @Entity
 @Table(name = "t_order")
 @XmlRootElement
@@ -27,9 +30,11 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     private Long id;
     @Column(name = "order_date", updatable = false)
     @Temporal(TemporalType.DATE)
+    @Setter(AccessLevel.NONE)
     private Date orderDate;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_fk", nullable = false)
@@ -93,22 +98,6 @@ public class Order {
     // ======================================
     // =         Getters & setters          =
     // ======================================
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
-    }
 
     public String getCreditCardNumber() {
         return creditCard.getCreditCardNumber();
